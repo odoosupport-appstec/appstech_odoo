@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form_ayees_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="is_consultant"/>
+                <field name="is_client"/>
+                <field name="is_contractor"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_res_partner_client" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban,activity</field>
+        <field name="domain">[('is_client', '=', True)]</field>
+        <field name="context">{'res_partner_search_mode': 'customer','default_is_client':1}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Client in your address book
+            </p>
+            <p>
+                Odoo helps you easily track all activities related to a Client.
+            </p>
+        </field>
+    </record>
+    <record id="action_res_partner_contractor" model="ir.actions.act_window">
+        <field name="name">Contractors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban,activity</field>
+        <field name="domain">[('is_contractor', '=', True)]</field>
+        <field name="context">{'res_partner_search_mode': 'customer','default_is_contractor':1}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Contractor in your address book
+            </p>
+            <p>
+                Odoo helps you easily track all activities related to a contactor.
+            </p>
+        </field>
+    </record>
+    <record id="action_res_partner_consultant" model="ir.actions.act_window">
+        <field name="name">Consultants</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban,activity</field>
+        <field name="domain">[('is_consultant', '=', True)]</field>
+        <field name="context">{'res_partner_search_mode': 'customer','default_is_consultant':1}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Consultant in your address book
+            </p>
+            <p>
+                Odoo helps you easily track all activities related to a Consultant.
+            </p>
+        </field>
+    </record>
+
+</odoo>

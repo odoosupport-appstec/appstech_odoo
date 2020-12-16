@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<menuitem
+            id="crm_team_menu_config_client"
+            name="Clients"
+            parent="crm.crm_menu_config"
+            action="sr_crm_customization.action_res_partner_client"
+            sequence="10"/>
+    <menuitem
+            id="crm_team_menu_config_consultant"
+            name="Consultants"
+            parent="crm.crm_menu_config"
+            action="sr_crm_customization.action_res_partner_consultant"
+            sequence="10"/>
+    <menuitem
+            id="crm_team_menu_config_contractor"
+            name="Contractors"
+            parent="crm.crm_menu_config"
+            action="sr_crm_customization.action_res_partner_contractor"
+            sequence="10"/>
+    
+    <menuitem
+            id="menu_action_factory_factory"
+            name="Factory"
+            parent="crm.crm_menu_config"
+            action="sr_crm_customization.action_factory_factory_load"
+            sequence="10"/>
+            
+   	<menuitem
+            id="menu_action_crm_project_type_load"
+            name="Enquiry Type"
+            parent="crm.crm_menu_config"
+            action="sr_crm_customization.action_crm_project_type_load"
+            sequence="10"/>
+
+</odoo>

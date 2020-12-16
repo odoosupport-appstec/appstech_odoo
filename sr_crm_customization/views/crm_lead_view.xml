@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="view_crm_lead_enrich_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm_iap_lead_enrich.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='iap_enrich'][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='iap_enrich'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+     </record>
+     
+    <record id="view_crm_lead_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//sheet/group/group[@name='opportunity_partner']/field[@name='partner_id']" 
+        		   position="before">
+                <field name="enquiry_number" readonly="1"/>
+            </xpath>
+            <xpath expr="//sheet/group/group[@name='opportunity_partner']/div[2]" 
+            	   position="after">
+                <field name="project_name"/>
+                <field name="project_emirate"/>
+                <field name="factory_id" options="{'no_create': True}"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only" string="Lead"
+                           attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
+                    <label for="name" class="oe_edit_only" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+                    <h1>
+                        <field class="o_text_overflow" name="name" placeholder="e.g. Product Pricing"/>
+                    </h1>
+                </div>
+            </xpath>
+            <xpath expr="//button[@name='action_schedule_meeting']" position="after">
+                <button name="action_cost_estimation" type="object" class="oe_stat_button" icon="fa-money">
+                    <div class="o_stat_info">
+                        <field name="cost_count" class="o_stat_value"/>
+                        Cost Estimation
+                    </div>
+                </button>
+                <!-- <button name="action_specification" type="object" class="oe_stat_button" icon="fa-file">
+                    <div class="o_stat_info">
+                        <field name="specification_count" class="o_stat_value"/>
+                        Specification
+                    </div>
+                </button> -->
+            </xpath>
+            <xpath expr="//field[@name='team_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_schedule_meeting']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='priority']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="replace">
+                <field name="project_type_id" options="{'no_create': True}"/>
+                <field name="capacity"/>
+                <field name="quantity"/>
+                <field name="speed"/>
+                <field name="stop" widget="integer"/>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="attributes">
+                <attribute name="string">Remark</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="before">
+                <page name="extra_info" string="Extra Information">
+                    <group col="4">
+                            <field name="ayees_cost"/>
+                            <field name="selling_price"/>
+                            <field name="ayee_no"/>
+                            <field name="offer_amount"/>
+                            <field name="currency_id"/>
+                            <field name="offer_date"/>
+                            <field name="factory_offer"/>
+                            <field name="client_id"  
+                            	   domain="[('is_client', '=', True)]"
+                            	   context="{'default_is_client':1}"/>
+                            <field name="landed_cost"/>
+                            <field name="contractor_id"  
+                            	   domain="[('is_contractor', '=', True)]"
+                            	   context="{'default_is_contractor':1}"/>
+                            <field name="consultant_id"  
+                            	   domain="[('is_consultant', '=', True)]"
+                            	   context="{'default_is_consultant':1}"/>
+                            <field name="last_updated_on" widget="date"/>
+                            <field name="created_on"/>
+                            <field name="handle_id" 
+                            	   options="{'no_create': True}"/>
+                            <label for="field_create_month"/>
+                            <div class="o_row">
+	                            <field name="field_create_month"/>
+	                            <field name="field_create_year"/>
+                            </div>
+                            <label for="first_quotation_month"/>
+                            <div class="o_row">
+	                            <field name="first_quotation_month"/>
+	                            <field name="first_quotation_year"/>
+                            </div>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

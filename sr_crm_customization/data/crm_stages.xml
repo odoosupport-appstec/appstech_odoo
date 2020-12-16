@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="crm.stage" id="stage_lead_ayees_1">
+        <field name="name">Quoted</field>
+        <field name="state_id">quoted</field>
+        <field name="sequence">1</field>
+    </record>
+    <record model="crm.stage" id="stage_lead_ayees_2">
+        <field name="name">Securable</field>
+        <field name="state_id">securable</field>
+        <field name="sequence">2</field>
+    </record>
+    <record model="crm.stage" id="stage_lead_ayees_3">
+        <field name="name">On Hold</field>
+        <field name="state_id">onhold</field>
+        <field name="sequence">3</field>
+    </record>
+    <record model="crm.stage" id="stage_lead_ayees_4">
+        <field name="name">Lost / Closed</field>
+
+        <field name="state_id">lost_closed</field>
+        <field name="sequence">4</field>
+    </record>
+     <record model="crm.stage" id="stage_lead_ayees_5">
+        <field name="name">Awarded</field>
+         <field name="state_id">awarded</field>
+        <field name="sequence">5</field>
+    </record>
+    <record model="crm.stage" id="stage_lead_ayees_6">
+        <field name="name">Not Yet Quoted</field>
+        <field name="state_id">not_yet_quoted</field>
+        <field name="sequence">6</field>
+    </record>
+   
+</odoo> 
